@@ -6,6 +6,8 @@
 import numpy as np
 import random
 
+#Prints the ndarray in format so it is readable(a bit at least)
+
 def Print_Board(board):
     for i in range(9):
         for j in range(9):
@@ -21,6 +23,8 @@ def Print_Board(board):
             print("\n---------------------",end='')
         print()
 
+#This function finds...well...an empty cell
+
 def Find_Empty_Cell(board):
     for i in range(9):
         for j in range(9):
@@ -33,6 +37,9 @@ def Find_Empty_Cell(board):
     res=np.array([-1,-1,0])
     return res
 
+#This function checks the validity of a number at a given position in the puzzle 
+#Done according to sudoku rules
+
 def Check_Validity(board,row,col,num):
     row_start=(row//3)*3
     col_start=(col//3)*3
@@ -41,6 +48,9 @@ def Check_Validity(board,row,col,num):
     if num in board[row_start:row_start+3,col_start:col_start+3]:
         return False
     return True
+
+#Generates an unsolved sudoku board based on required difficulty
+#The algorithm for difficulty generation is a little primitive, but really helpful for accuracy 
 
 def Generate_Unsolved_Puzzle(board,difficulty):
     count,done=0,False
@@ -83,6 +93,8 @@ def Generate_Unsolved_Puzzle(board,difficulty):
             done=True
             break
 
+#Input of the row, column and nummber to check is done here, so essentially playing the game lol
+
 def Play_Sudoku(Solved_Board,Unsolved_Board):
     while True:    
         row=int(input("Enter the row to insert number:")) - 1
@@ -107,6 +119,9 @@ def Play_Sudoku(Solved_Board,Unsolved_Board):
             Print_Board(Solved_Board)
             return
 
+#Solving any unsolved sudoku puzzle is done here, first call generates a solved puzzle
+#Uses a backtracking algorithm 
+
 def Solve_Sudoku(board,not_check):
     x=Find_Empty_Cell(board)
     if x[2]==0:
@@ -122,6 +137,8 @@ def Solve_Sudoku(board,not_check):
                         return True
                     board[row,col]=0 
     return False
+
+#Inputs difficulty and initializes playing board
 
 def main():
     ch=int(input("Hello!Choose the level of difficulty-\n1.Easy\n2.Medium\n3.Hard\nYour choice:"))
