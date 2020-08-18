@@ -150,11 +150,7 @@ def main():
         difficulty="Hard"
     board=np.zeros((9,9),dtype="int8")
     if Solve_Sudoku(board,-1):
-        print("\n\n\nThe solved Puzzle is:\n\n")
-        Print_Board(board)
         Solved_Board=board.copy()
-        print("The ndarray of Solved_Board is:\n\n")
-        Print_Board(Solved_Board)
         print("\n\nThe unsolved puzzle is:\n")
         Generate_Unsolved_Puzzle(board,difficulty)
         Print_Board(board)
