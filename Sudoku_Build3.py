@@ -112,7 +112,7 @@ def Play_Sudoku(Solved_Board,Unsolved_Board):
                     Print_Board(Unsolved_Board)
             else:
                 print("That location is already correctly filled!")
-            if np.array_equal(Solved_Board,Unsolved_board):
+            if np.array_equal(Solved_Board,Unsolved_Board):
                 print("Congrats on solving the sudoku!")
                 break
         else:
